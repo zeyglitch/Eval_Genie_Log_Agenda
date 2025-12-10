@@ -1,28 +1,31 @@
 package agenda;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Repetition {
-    public ChronoUnit getFrequency() {
-        return myFrequency;
-    }
 
     /**
-     * Stores the frequency of this repetition, one of :
-     * <UL>
-     * <LI>ChronoUnit.DAYS for daily repetitions</LI>
-     * <LI>ChronoUnit.WEEKS for weekly repetitions</LI>
-     * <LI>ChronoUnit.MONTHS for monthly repetitions</LI>
-     * </UL>
-     */
-    private final ChronoUnit myFrequency;
+    * Stores the frequency of this repetition, one of :
+    * <UL>
+    * <LI>ChronoUnit.DAYS for daily repetitions</LI>
+    * <LI>ChronoUnit.WEEKS for weekly repetitions</LI>
+    * <LI>ChronoUnit.MONTHS for monthly repetitions</LI>
+    * </UL>
+    */
 
-    public Repetition(ChronoUnit myFrequency) {
-        this.myFrequency = myFrequency;
+    private final ChronoUnit myFrequency;
+    private final List<LocalDate> exceptions = new ArrayList<>();
+    private Termination termination;
+
+    public Repetition(ChronoUnit frequency) {
+        this.myFrequency = frequency;
+    }
+
+    public ChronoUnit getFrequency() {
+        return myFrequency;
     }
 
     /**
@@ -30,17 +33,22 @@ public class Repetition {
      * @param date un date à laquelle l'événement ne doit pas se répéter
      */
     public void addException(LocalDate date) {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        exceptions.add(date);
     }
 
+    public boolean isException(LocalDate date) {
+        return exceptions.contains(date);
+    }
+    
     /**
      * La terminaison d'une répétition (optionnelle)
      * @param termination la terminaison de la répétition
      */
     public void setTermination(Termination termination) {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        this.termination = termination;
+    }
 
+    public Termination getTermination() {
+        return termination;
     }
 }

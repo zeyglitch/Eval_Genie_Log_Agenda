@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -69,6 +70,18 @@ public class AgendaTest {
         assertEquals(4, agenda.eventsInDay(nov_1_2020).size(),
                 "Il y a 4 événements ce jour là");
         assertTrue(agenda.eventsInDay(nov_1_2020).contains(neverEnding));
+    }
+
+    @Test
+    public void testFindByTitle() {
+        assertEquals(2, agenda.findByTitle("Fixed termination weekly").size(),"2 Titres ayant ce nom");
+    }
+
+    @Test
+    public void testIsFreeFor() {
+        assertFalse(agenda.isFreeFor(simple),"ne doit pas être libre");
+        Event simple2 = new Event("Simple event", LocalDateTime.of(2019, 11, 1, 22, 30), min_120);
+        assertTrue(agenda.isFreeFor(simple2),"Doit être libre");
     }
 
 }

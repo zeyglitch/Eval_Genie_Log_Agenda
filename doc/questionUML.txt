@@ -1,2 +1,40 @@
-Ecrire ici votre réponse à la question UML.
+Analyse comparative des 2 UML
 
+1. Analyse du 1er UML (Figure 2 : Approche par Composition) Ce modèle repose sur le principe de composition : la classe Event délègue la gestion de la temporalité qui est complexe à une classe dédiée Repetition.
+
+    Avantages :
+
+        - Dynamisme : C'est le plus important. Un événement simple peut devenir répétitif au cours de l'exécution du programme simplement en lui associant un objet Repetition,
+        sans avoir besoin de recréer l'objet Event entier.
+
+        - Séparation des responsabilités : La logique de l'événement est différente de la logique de calcul des dates.
+        Cela rend le code plus facile à maintenir et à tester.
+
+        - Précision : Ce modèle permet de gérer des cas complexes, comme des exceptions pour certains jours.
+
+    Inconvénients :
+
+        - Complexité structurelle : Le diagramme présente plus de classes et d'associations. Cela signifie qu'il y aura plus de travail, ce qui n'est pas forcément nécéssaire si le besoin est simple.
+        Nous n'avons pas forcément besoin de toutes les fonctionnalitées, ce qui rend le projet plus lourd.
+
+    Cet UML est bien pour les agendas compliqués.
+
+2. Analyse du 2 ème UML (Figure 3 : Approche par Héritage) Ce modèle utilise la spécialisation : un événement répétitif est une sous-classe d'un événement standard.
+
+    Avantages :
+
+        - Intuitif : L'UML est plus simple avec moins de classes et de relations. Pour des besoins simples, c'est une solution rapide à mettre en œuvre et simple à utiliser.
+
+        - Accès direct : Toutes les propriétés sont accessibles directement sans avoir à traverser d'associations.
+
+    Inconvénients :
+
+        - Moins de possibilitées : Il ne peut pas gérer les évènements complexe, comme le ferait le 1er UML.
+
+        - Limites d'évolution : Cet UML supporte mal le fait de pouvoir rajouter de potentielles fonctionnalitées supplémentaires.
+
+    Cet UML suffie pour les agendas simples.
+
+Conclusion :
+La solution de la Figure 2 est préférable pour des agendas compliqués, mais l'UML de la figure 3 suffit si on souhaite développer un agendas avec des fonctionnalitées simples.
+L'UML de la figure 2 favorise la composition plutôt que l'héritage, ce qui permet une évoluton possible du logiciel.
